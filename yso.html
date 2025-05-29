@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Young Street Ontario</title>
+  <style>
+    /* Reset and basics */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Stars background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/stars.png') repeat;
+      animation: moveStars 200s linear infinite;
+      z-index: 0;
+      opacity: 0.7;
+    }
+    @keyframes moveStars {
+      0% { background-position: 0 0; }
+      100% { background-position: 10000px 5000px; }
+    }
+    /* Container */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 120px auto 50px;
+      padding: 0 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      color: #00ffe0;
+      text-shadow: 0 0 10px #00ffe0;
+    }
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .tab-btn {
+      background-color: #00ffe0;
+      border: none;
+      padding: 12px 25px;
+      margin: 0 8px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #000;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .tab-btn:hover {
+      background-color: #00aaff;
+      color: white;
+    }
+    .tab-btn.active {
+      background-color: #00aaff;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00aaff;
+    }
+    /* Sections */
+    section {
+      display: none;
+      text-align: left;
+      color: white;
+    }
+    section.active {
+      display: block;
+    }
+    /* Buttons inside landing */
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    .buttons button {
+      background-color: #00ffe0;
+      border: none;
+      padding: 15px 30px;
+      margin: 5px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #000;
+      transition: background-color 0.3s ease;
+    }
+    .buttons button:hover {
+      background-color: #00aaff;
+      color: white;
+    }
+    /* Progress list */
+    ul.progress-list {
+      list-style: none;
+      font-size: 1.1rem;
+      padding-left: 0;
+      max-width: 500px;
+      margin: 0 auto 30px;
+    }
+    ul.progress-list li {
+      margin-bottom: 12px;
+    }
+    /* Leak images gallery */
+    .leaks-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .leaks-gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00aaff;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .leaks-gallery img:hover {
+      transform: scale(1.05);
+    }
+    /* Timer styling */
+    .timer {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #00ffe0;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 5px #00aaff;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Young Street Ontario</h1>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="home">Home</button>
+      <button class="tab-btn" data-tab="progress">Development Progress</button>
+    </div>
+
+    <section id="home" class="active">
+      <p>A realistic urban life game on Roblox. Coming Soon!</p>
+
+      <div class="timer" id="leak-timer">Next leaks reset in: --:--:--</div>
+
+      <div class="leaks-gallery" id="leaks-gallery">
+        <!-- Leak images go here -->
+        <img src="https://i.imgur.com/F7Jq1Fw.jpg" alt="Leak 1" title="City Map Preview" />
+        <img src="https://i.imgur.com/2o3HLqp.jpg" alt="Leak 2" title="Vehicle Preview" />
+        <img src="https://i.imgur.com/7w3YjF6.jpg" alt="Leak 3" title="Interior Design Leak" />
+        <img src="https://i.imgur.com/zFGmFqA.jpg" alt="Leak 4" title="Night Mode Screenshot" />
+      </div>
+
+      <div class="buttons">
+        <button onclick="alert('Game not released yet!')">🚧 Coming Soon</button>
+        <button onclick="switchTab('progress')">📈 Development Progress</button>
+        <button onclick="window.open('https://discord.com', '_blank')">💬 Join Discord</button>
+      </div>
+    </section>
+
+    <section id="progress">
+      <h2>Development Progress</h2>
+      <ul class="progress-list">
+        <li>✅ Game concept finalized</li>
+        <li>✅ Map Done</li>
+        <li>🔄 Working on vehicles</li>
+        <li>🔄 Police & crime systems in progress</li>
+        <li>🔜 Beta signup coming soon</li>
+      </ul>
+      <div class="buttons">
+        <button onclick="switchTab('home')">⬅ Back to Home</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Tabs
+    const tabs = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('section');
+
+    function switchTab(tabName) {
+      sections.forEach(section => {
+        section.classList.toggle('active', section.id === tabName);
+      });
+      tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.tab === tabName);
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        switchTab(tab.dataset.tab);
+      });
+    });
+
+    // Leak timer
+    const leakTimerEl = document.getElementById('leak-timer');
+
+    // Set leak reset interval in hours (e.g. every 24 hours)
+    const leakResetIntervalHours = 24;
+
+    // Calculate next reset time based on current date/time
+    function getNextResetDate() {
+      const now = new Date();
+      const next = new Date(now);
+      next.setHours(0,0,0,0); // set to start of today
+      next.setHours(next.getHours() + leakResetIntervalHours); // add interval
+      if(next <= now) {
+        // If next is past, add another interval
+        next.setHours(next.getHours() + leakResetIntervalHours);
+      }
+      return next;
+    }
+
+    let nextReset = getNextResetDate();
+
+    function updateTimer() {
+      const now = new Date();
+      let diff = nextReset - now;
+      if(diff <= 0) {
+        nextReset = getNextResetDate(); // reset timer
+        diff = nextReset - now;
+      }
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      leakTimerEl.textContent = `Next leaks reset in: ${String(hours).padStart(2
